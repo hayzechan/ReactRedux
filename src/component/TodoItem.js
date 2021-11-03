@@ -3,8 +3,6 @@ import apis from "../apis/apis";
 import '../style/TodoItem.css';
 import EditTodo from "./EditTodo";
 
-
-
 const TodoItem = ({ todo }) => {
     const dispatch = useDispatch();
     const text = (todo.done) ? <del>{todo.text}</del> : todo.text
@@ -24,7 +22,7 @@ const TodoItem = ({ todo }) => {
             <span className='delete' onClick={deleteRow}>
                 X
             </span>
-            <EditTodo/>
+            <EditTodo todo={todo}/>
         </div>
     )
 }

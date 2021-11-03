@@ -2,7 +2,6 @@ const initState = { todoList: [] };
 const TodoReducer = (state = initState, action) => {
     switch (action.type) {
         case 'addTodo':
-            //const todo = { id: uuidv4(), text: action.payload, done: false }
             return { todoList: [...state.todoList, action.payload] }
 
         case 'updateTodo':
