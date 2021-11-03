@@ -6,8 +6,9 @@ const TodoDone = () => {
 
     return (
         <div>
-            {todos.filter(item => todos.done).map(todo => <TodoItem key={todo.id} todo={todo.done} />)}
+            <h1>Done Todo List</h1>
+            {todos.filter(item => item.done).map(todo => <TodoItem key={todo.id} todo={todo} />)}
         </div>
     )
-    }
+}
 export default TodoDone

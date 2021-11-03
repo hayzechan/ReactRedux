@@ -17,11 +17,7 @@ const EditTodo = ({todo}) => {
     const handleCancel = () => {
         setIsModalVisible(false);
     };
-
-    //   const addTodo = () => {
-    //     apis.post('/todos', {text: text, done: false})
-    //         .then(response => dispatch({ type: 'addTodo', payload: text }));
-    // }
+    
     const updateStatus = () => {
         const updated = {...todo, text: text};
 
