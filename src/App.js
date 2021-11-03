@@ -10,30 +10,30 @@ import {
   Link
 } from "react-router-dom";
 import TodoDone from './component/TodoDone';
-import { Layout, Breadcrumb,Pagination } from 'antd';
+import { Layout, Pagination, Menu } from 'antd';
+import { TranslationOutlined } from '@ant-design/icons';
 
 function App() {
 
   const store = createStore(TodoReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
-  const { Content, Footer } = Layout;
+  const { Header, Content, Footer } = Layout;
 
   return (
     <div className="App">
       <Layout className="layout">
-        <Content style={{ padding: '0 50px' }}>
+        <Header style={{ position: 'fixed', width: '100%', height: '0%' }}>
+          <Menu
+            theme='dark'
+            mode='horizontal'
+            defaultSelectedKeys={['1']}>
 
-          <Breadcrumb style={{ margin: '16px 0' }}>
-            <Breadcrumb.Item>
-              <Link className='link' to='/'>Home</Link>
-            </Breadcrumb.Item>
-            <Breadcrumb.Item>
-              <Link className='link' to='help'>Help</Link>
-            </Breadcrumb.Item>
-            <Breadcrumb.Item>
-              <Link className='link' to='done'>Done</Link>
-            </Breadcrumb.Item>
-          </Breadcrumb>
+            <Link className='link' to='/'>Home</Link>
+            <Link className='link' to='help'>Help</Link>
+            <Link className='link' to='done'>Done</Link>
+          </Menu>
+        </Header>
 
+        <Content style={{ padding: '0 50px', marginTop: 64 }}>
           <Provider store={store}>
             <Switch>
               <div className="site-layout-content" >
@@ -45,7 +45,7 @@ function App() {
           </Provider>
 
         </Content>
-        <Footer><Pagination defaultCurrent={1} total={50} pageSizeOptions='1' showLessItems='true' /></Footer>
+        <Footer><Pagination defaultCurrent={1} total={50} pageSizeOptions='1' showLessItems /></Footer>
       </Layout>
     </div >
 
