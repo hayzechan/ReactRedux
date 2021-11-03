@@ -11,7 +11,7 @@ import {
 } from "react-router-dom";
 import TodoDone from './component/TodoDone';
 import { Layout, Pagination, Menu } from 'antd';
-import { TranslationOutlined } from '@ant-design/icons';
+import PageNotFound from './component/PageNotFound';
 
 function App() {
 
@@ -40,6 +40,7 @@ function App() {
                 <Route exact path='/' component={TodoList} />
                 <Route path='/help' component={Help} />
                 <Route path='/done' component={TodoDone} />
+                <Route path='*' component={PageNotFound}/>
               </div>
             </Switch>
           </Provider>

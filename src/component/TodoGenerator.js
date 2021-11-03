@@ -12,7 +12,6 @@ const TodoGenerator = () => {
         apis.post('/todos', {text: text, done: false})
             .then(response => dispatch({ type: 'addTodo', payload: text }));
     }
-    
     return (
         <div>
             <input onChange={event => setText(event.target.value)} defaultValue={text} />
