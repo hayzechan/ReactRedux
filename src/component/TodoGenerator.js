@@ -9,13 +9,13 @@ const TodoGenerator = () => {
     const dispatch = useDispatch();
 
     const addTodo = () => {
-        apis.post('/todos', {text: text, done: false})
-            .then(response => dispatch({ type: 'addTodo', payload: text }));
+        apis.post('/todos', { text: text, done: false })
+            .then(response => dispatch({ type: 'addTodo', payload: response.data }));
     }
     return (
         <div>
             <input onChange={event => setText(event.target.value)} defaultValue={text} />
-            <Button type = "primary" onClick={addTodo}> ADD </Button>
+            <Button type="primary" onClick={addTodo}> ADD </Button>
         </div>
     )
 }

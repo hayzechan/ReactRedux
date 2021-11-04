@@ -7,11 +7,11 @@ import TodoReducer from './component/reducer/TodoReducer';
 import {
   Switch,
   Route,
-  Link
+  Link,
+  Redirect
 } from "react-router-dom";
 import TodoDone from './component/TodoDone';
 import { Layout, Pagination, Menu } from 'antd';
-import PageNotFound from './component/PageNotFound';
 
 function App() {
 
@@ -20,34 +20,32 @@ function App() {
 
   return (
     <div className="App">
-      <Layout className="layout">
-        <Header style={{ position: 'fixed', width: '100%', height: '0%' }}>
-          <Menu
-            theme='dark'
-            mode='horizontal'
-            defaultSelectedKeys={['1']}>
+      <Provider store={store}>
+        <Layout className="layout">
+          <Header style={{ position: 'fixed', width: '100%', height: '0%' }}>
+            <Menu
+              theme='dark'
+              mode='horizontal'
+              defaultSelectedKeys={['1']}>
+              <Link className='link' to='/'>Home</Link>
+              <Link className='link' to='help'>Help</Link>
+              <Link className='link' to='done'>Done</Link>
+            </Menu>
+          </Header>
 
-            <Link className='link' to='/'>Home</Link>
-            <Link className='link' to='help'>Help</Link>
-            <Link className='link' to='done'>Done</Link>
-          </Menu>
-        </Header>
-
-        <Content style={{ padding: '0 50px', marginTop: 64 }}>
-          <Provider store={store}>
+          <Content style={{ padding: '0 60px', marginTop: 64 }}>
             <Switch>
               <div className="site-layout-content" >
                 <Route exact path='/' component={TodoList} />
                 <Route path='/help' component={Help} />
                 <Route path='/done' component={TodoDone} />
-                <Route path='*' component={PageNotFound}/>
+                <Redirect path='/'></Redirect>
               </div>
             </Switch>
-          </Provider>
-
-        </Content>
-        <Footer><Pagination defaultCurrent={1} total={50} pageSizeOptions='1' showLessItems /></Footer>
-      </Layout>
+          </Content>
+          <Footer><Pagination defaultCurrent={1} total={50} pageSizeOptions='1' showLessItems /></Footer>
+        </Layout>
+      </Provider>
     </div >
 
   );

@@ -2,14 +2,16 @@ import { useDispatch } from "react-redux";
 import apis from "../apis/apis";
 import '../style/TodoItem.css';
 import EditTodo from "./EditTodo";
+import { CloseOutlined } from '@ant-design/icons';
 
 const TodoItem = ({ todo }) => {
     const dispatch = useDispatch();
     const text = (todo.done) ? <del>{todo.text}</del> : todo.text
 
+    //Try to refactor
     const updateStatus = () => {
-        apis.put(`/todos/${todo.id}` ,{done: !todo.done})
-            .then(reponse => dispatch({type: 'updateTodo', payload:reponse.data}))
+        apis.put(`/todos/${todo.id}`, { done: !todo.done })
+            .then(reponse => dispatch({ type: 'updateTodo', payload: reponse.data }))
     }
     const deleteRow = () => {
         apis.delete(`/todos/${todo.id}`)
@@ -20,9 +22,9 @@ const TodoItem = ({ todo }) => {
         <div className='box'>
             <span onClick={updateStatus}>{text}</span>
             <span className='delete' onClick={deleteRow}>
-                X
+                <CloseOutlined />
             </span>
-            <EditTodo todo={todo}/>
+            <EditTodo todo={todo} />
         </div>
     )
 }
